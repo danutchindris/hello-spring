@@ -1,0 +1,10 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Hello</title>
+    </head>
+    <body>
+        <h1 th:text="${'Hello ' + first_name + ' ' + (last_name != null ? last_name : '')}">Hello world!</h1>
+    </body>
+</html>

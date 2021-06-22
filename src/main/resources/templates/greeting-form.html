@@ -1,0 +1,13 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Greeting form</title>
+    </head>
+    <body>
+        <form method="post" th:action="@{/greet}" th:object="${person}">
+            <input type="text" th:field="*{name}"/>
+            <input type="submit" value="Send"/>
+        </form>
+    </body>
+</html>
