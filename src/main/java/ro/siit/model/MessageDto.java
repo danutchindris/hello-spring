@@ -1,12 +1,24 @@
 package ro.siit.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 /**
  * DTO - Data Transfer Object
  */
 public class MessageDto {
 
+    @NotBlank
+    @Email
     private String email;
+
+    @NotBlank
+    @Size(min = 3, max = 255)
     private String subject;
+
+    @NotBlank
+    @Size(min = 5, max = 2000)
     private String body;
 
     public MessageDto() {

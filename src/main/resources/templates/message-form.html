@@ -8,13 +8,22 @@
         <form method="post" th:action="@{/message}" th:object="${msg}">
             <label for="email">Email</label>
             <input id="email" type="text" th:field="*{email}"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
             <br><br>
+
             <label for="subject">Subject</label>
             <input id="subject" type="text" th:field="*{subject}"/>
+            <span th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></span>
+
             <br><br>
+
             <label for="body">Body</label>
             <textarea id="body" th:field="*{body}" rows="5" cols="20"></textarea>
+            <span th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></span>
+
             <br><br>
+
             <input type="submit" value="Send"/>
         </form>
     </body>
