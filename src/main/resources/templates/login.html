@@ -1,0 +1,17 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login form</title>
+    </head>
+    <body>
+        <form method="post" th:action="@{/login}">
+            <div th:if="${param.logout}">
+                You have been successfully logged out.
+            </div>
+            <input type="text" id="username" name="username" />
+            <input type="password" id="password" name="password" />
+            <button type="submit">Login</button>
+        </form>
+    </body>
+</html>
