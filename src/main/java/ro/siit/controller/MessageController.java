@@ -1,5 +1,7 @@
 package ro.siit.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,8 @@ import javax.validation.Valid;
 @RequestMapping("/message")
 public class MessageController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
+
     @Autowired
     private MessageService messageService;
 
@@ -33,6 +37,7 @@ public class MessageController {
     public String processForm(@Valid @ModelAttribute("msg") final MessageDto messageDto, final BindingResult bindingResult,
                               final Model model) {
         if (bindingResult.hasErrors()) {
+            LOGGER.debug("We have errors in the form: {}", bindingResult);
             return "message-form";
         } else {
             messageService.saveMessage(messageDto);
