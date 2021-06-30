@@ -5,6 +5,8 @@
         <title>Hello</title>
     </head>
     <body>
+        <p th:replace="header :: header-info"></p>
         <h1 th:text="${'Hello ' + first_name + ' ' + (last_name != null ? last_name : '')}">Hello world!</h1>
+        <p th:replace="footer :: footer-info"></p>
     </body>
 </html>

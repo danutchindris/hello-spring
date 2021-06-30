@@ -4,6 +4,10 @@
         <title>All messages</title>
     </head>
     <body>
+        <div th:replace="header :: header-info">
+            Header
+        </div>
+
         <h1>All messages</h1>
         <table border="1">
             <tr>
@@ -17,5 +21,9 @@
                 <td th:text="${msg.body}"></td>
             </tr>
         </table>
+
+        <div th:replace="footer :: footer-info">
+            Footer
+        </div>
     </body>
 </html>
