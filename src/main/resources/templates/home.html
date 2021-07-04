@@ -3,10 +3,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Hello</title>
+        <link href="#" th:replace="common :: bootstrap-css"/>
     </head>
     <body>
         <p th:replace="header :: header-info"></p>
         <h1 th:text="${'Hello ' + first_name + ' ' + (last_name != null ? last_name : '')}">Hello world!</h1>
         <p th:replace="footer :: footer-info"></p>
+        <script src="#" th:replace="common :: bootstrap-js"></script>
     </body>
 </html>

@@ -31,4 +31,16 @@ public class MessageServiceImpl implements MessageService {
                 .map(m -> new MessageDto(m.getEmail(), m.getSubject(), m.getBody()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public boolean updateMessage(final Long id, final MessageDto messageDto) {
+        messageRepository.findById(id)
+                .ifPresent(message -> {
+                    message.setEmail(messageDto.getEmail());
+                    message.setSubject(messageDto.getSubject());
+                    message.setBody(messageDto.getBody());
+                    messageRepository.save(message);
+                });
+        return true; // TODO: this is bad; change it
+    }
 }

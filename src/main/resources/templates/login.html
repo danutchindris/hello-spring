@@ -1,17 +1,42 @@
 <!doctype html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Login form</title>
-    </head>
-    <body>
-        <form method="post" th:action="@{/login}">
-            <div th:if="${param.logout}">
-                You have been successfully logged out.
+<head>
+    <title>Login form</title>
+    <link href="#" th:replace="common :: bootstrap-css"/>
+</head>
+<body>
+<div th:replace="header :: header-info"></div>
+
+<div class="wrapper">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 offset-md-4">
+                    <form method="post" th:action="@{/login}">
+                        <div class="mb-3">
+                            <div th:if="${param.logout}">
+                                You have been successfully logged out.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input class="form-control" type="text" id="username" name="username"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Password</label>
+                            <input class="form-control" type="password" id="password" name="password"/>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
             </div>
-            <input type="text" id="username" name="username" />
-            <input type="password" id="password" name="password" />
-            <button type="submit">Login</button>
-        </form>
-    </body>
+        </div>
+    </div>
+</div>
+<script src="#" th:replace="common :: bootstrap-js"></script>
+</body>
 </html>
