@@ -1,0 +1,61 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>All messages</title>
+</head>
+<body>
+<div th:replace="header :: header-info">
+    Header
+</div>
+
+<div>
+<select id="authorSelect" onchange="retrieveBooks()">
+    <option selected value="-1"></option>
+    <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}">Option</option>
+</select>
+
+</div>
+<div>
+    <select id="bookSelect">
+        <option selected value="-1"></option>
+    </select>
+</div>
+
+<div th:replace="footer :: footer-info">
+    Footer
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script th:inline="text">
+/*<![CDATA[*/
+    function retrieveBooks() {
+        // required by Spring Security
+        var header = $("meta[name='_csrf_header']").attr("content");
+        var token = $("meta[name='_csrf']").attr("content");
+        $.ajax({
+            url: '/authors/books?authorId=' + $('#authorSelect option:selected').val(),
+            type: 'get',
+            contentType: 'application/json',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            success: function (result) {
+                var $dropdown = $("#bookSelect");
+                $dropdown.empty();
+                $.each(result, function() {
+                    $dropdown.append($("<option />").val(this.id).text(this.title));
+                });
+            },
+            error: function () {
+                // what do you want to do in case of error
+            }
+        });
+    }
+/*]]>*/
+</script>
+
+</body>
+</html>
