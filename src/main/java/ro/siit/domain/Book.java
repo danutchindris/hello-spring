@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "books")
@@ -24,6 +25,9 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
+
+    @Column
+    private LocalDate publishedAt;
 
     public Long getId() {
         return id;
@@ -47,5 +51,13 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    public LocalDate getPublishedAt() {
+        return publishedAt;
+    }
+
+    public void setPublishedAt(LocalDate publishedAt) {
+        this.publishedAt = publishedAt;
     }
 }

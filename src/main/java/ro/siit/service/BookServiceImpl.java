@@ -24,9 +24,7 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public List<BookDto> findByAuthor(final Long authorId) {
-        final List<Book> books = authorRepository.findById(authorId)
-                .map(a -> bookRepository.findByAuthor(a))
-                .orElse(new ArrayList<>());
+        final List<Book> books = bookRepository.retrieveBooksByAuthorId(authorId);
         return books.stream()
                 .map(b -> new BookDto(b.getId(), b.getTitle()))
                 .collect(Collectors.toList());
