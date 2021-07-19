@@ -27,7 +27,7 @@ public class LibraryController {
 
     @GetMapping("/authors")
     public String retrieveAuthors(final Model model) {
-        model.addAttribute("authors", authorService.findAll());
+        model.addAttribute("authors", authorService.findAll(3, 3));
         return "all-authors";
     }
 
@@ -38,7 +38,8 @@ public class LibraryController {
     }
 
     @GetMapping("/books/{date}")
-    public @ResponseBody List<BookDto> retrieveBooksByDate(@PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) final LocalDate date) {
+    public @ResponseBody
+    List<BookDto> retrieveBooksByDate(@PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) final LocalDate date) {
         return new ArrayList<>();
     }
 }

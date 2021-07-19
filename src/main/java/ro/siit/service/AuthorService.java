@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AuthorService {
 
-    List<AuthorDto> findAll();
+    List<AuthorDto> findAll(int offset, int size);
 }
