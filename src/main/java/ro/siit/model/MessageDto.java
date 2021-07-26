@@ -1,5 +1,7 @@
 package ro.siit.model;
 
+import ro.siit.validator.UniqueEmail;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -11,6 +13,7 @@ public class MessageDto {
 
     @NotBlank
     @Email
+    @UniqueEmail(message = "email.in.use")
     private String email;
 
     @NotBlank

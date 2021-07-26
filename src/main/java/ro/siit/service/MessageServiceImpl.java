@@ -7,6 +7,7 @@ import ro.siit.model.MessageDto;
 import ro.siit.repository.MessageRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,5 +43,11 @@ public class MessageServiceImpl implements MessageService {
                     messageRepository.save(message);
                 });
         return true; // TODO: this is bad; change it
+    }
+
+    @Override
+    public Optional<MessageDto> findByEmail(final String email) {
+        return messageRepository.findByEmail(email)
+                .map(m -> new MessageDto(m.getEmail(), m.getSubject(), m.getBody()));
     }
 }
