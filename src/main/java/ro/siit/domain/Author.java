@@ -26,6 +26,14 @@ public class Author {
             cascade = CascadeType.ALL)
     private Set<Book> books;
 
+    public Author() {
+    }
+
+    public Author(final Long id, final String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

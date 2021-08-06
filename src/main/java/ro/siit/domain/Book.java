@@ -29,6 +29,16 @@ public class Book {
     @Column
     private LocalDate publishedAt;
 
+    public Book() {
+    }
+
+    public Book(final Long id, final String title, final Author author, final LocalDate publishedAt) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.publishedAt = publishedAt;
+    }
+
     public Long getId() {
         return id;
     }

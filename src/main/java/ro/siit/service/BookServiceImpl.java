@@ -4,19 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.siit.domain.Book;
 import ro.siit.model.BookDto;
-import ro.siit.repository.AuthorRepository;
 import ro.siit.repository.BookRepository;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImpl implements BookService {
-
-    @Autowired
-    private AuthorRepository authorRepository;
 
     @Autowired
     private BookRepository bookRepository;
