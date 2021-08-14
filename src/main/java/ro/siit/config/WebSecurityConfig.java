@@ -3,6 +3,7 @@ package ro.siit.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -35,6 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/", "/home", "/index", "/messages", "/messages/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/v2/api-docs", "/swagger-resources/**",
+                        "/swagger-ui.html**", "/webjars/**", "favicon.ico", "/swagger-ui/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

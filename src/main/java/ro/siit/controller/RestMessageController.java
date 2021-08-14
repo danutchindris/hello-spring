@@ -1,5 +1,7 @@
 package ro.siit.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +17,14 @@ import ro.siit.service.MessageService;
 import javax.validation.Valid;
 import java.util.List;
 
+@Api(value = "API for handling user messages")
 @RestController
 public class RestMessageController {
 
     @Autowired
     private MessageService messageService;
 
+    @ApiOperation(value = "Endpoint which returns all messages")
     @GetMapping("/messages")
     public List<MessageDto> getAllMessages() {
         return messageService.findAll();
